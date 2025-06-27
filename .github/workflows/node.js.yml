@@ -29,4 +29,4 @@ jobs:
     - run: npm ci
     - run: |
           touch .env
-          echo "${{ secret.ENV_PROD }}" > .env
+          echo "${{ secrets.ENV_PROD }}" > .env
