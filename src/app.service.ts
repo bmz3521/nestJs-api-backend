@@ -7,9 +7,9 @@ export class AppService {
   }
   getUsers() {
     return [
-      { id: 1, name: 'Benz', email: 'Benz@example.com' },
-      { id: 2, name: 'Milo', email: 'Milo@example.com' },
-      { id: 3, name: 'PorNahee', email: 'PorNahee@example.com' },
+      { id: 1, name: 'Benz', email: 'Benz@example.com', behavior : 'ดี' },
+      { id: 2, name: 'Milo', email: 'Milo@example.com', behavior : 'ดี' },
+      { id: 3, name: 'PorNahee', email: 'PorNahee@example.com', behavior : 'เหี้ย' },
     ];
   }
 }

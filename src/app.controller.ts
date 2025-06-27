@@ -16,7 +16,7 @@ export class AppController {
   @ApiResponse({ status: 200, description: 'Success' })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
-  getUsers(): { id: number; name: string; email: string }[] {
+  getUsers(): { id: number; name: string; email: string, behavior: string }[] {
     return this.appService.getUsers();
   }
 }
