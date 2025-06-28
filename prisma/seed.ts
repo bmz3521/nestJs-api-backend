@@ -121,12 +121,6 @@ const menu = await prisma.menu.createManyAndReturn({
         //     createdAt: new Date(),
         //     updatedAt: new Date(),
         // },
-        {
-            name: 'Export Timesheet',
-            menuStatusId: 1,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        },
     ],
 });
 
