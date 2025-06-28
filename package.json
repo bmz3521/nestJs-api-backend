@@ -21,7 +21,7 @@
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts",
-    "schema": "src/prisma/schema.prisma"
+    "schema": "prisma/schema.prisma"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
