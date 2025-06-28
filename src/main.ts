@@ -5,7 +5,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors();
+  
   const config = new DocumentBuilder()
     .setTitle('Plan กิน Plan เที่ยว API')
     .setDescription('พยายามจะสร้าง api นัดเจอ สังสรรค์ วางแผนรวมตัวกับเพื่อนๆ')
