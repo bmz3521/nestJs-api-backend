@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int        @id @default(autoincrement())
+  googleId          String?    @unique @map("google_id")
+  firstnameTh       String     @map("firstname_th")
+  lastnameTh        String     @map("lastname_th")
+  firstnameEn       String     @map("firstname_en")
+  lastnameEn        String     @map("lastname_en")
+  email             String
+  mobile            String?    @map("mobile")
+  thumbnailPhotoUrl String?    @map("thumbnail_photo_url")
+  position          String?    @map("position")
+  userStatusId      Int        @map("user_status_id")
+  roleId            Int        @map("role_id")
+  createdAt         DateTime   @default(now()) @map("created_at")
+  updatedAt         DateTime   @updatedAt @map("updated_at")
+
+  status            Status     @relation(name: "UserStatus", fields: [userStatusId], references: [id])
+  role              Role       @relation(fields: [roleId], references: [id])
+  userTokens        UserToken[]
+
+  @@map("user")
+}
+
+model Role {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  roleStatusId    Int               @map("role_status_id")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+
+  status          Status            @relation(name: "RoleStatus", fields: [roleStatusId], references: [id])
+  users           User[]
+  roleMenuAccess  RoleMenuAccess[]
+
+  @@map("role")
+}
+
+model Menu {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  menuStatusId    Int               @map("menu_status_id")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+
+  status          Status            @relation(name: "MenuStatus", fields: [menuStatusId], references: [id])
+  roleMenuAccess  RoleMenuAccess[]
+
+  @@map("menu")
+}
+
+model RoleMenuAccess {
+  id         Int      @id @default(autoincrement())
+  roleId     Int      @map("role_id")
+  menuId     Int      @map("menu_id")
+  canCreate  Boolean  @map("can_create")
+  canEdit    Boolean  @map("can_edit")
+  canRead    Boolean  @map("can_read")
+  canExport  Boolean  @map("can_export")
+  canApprove Boolean  @map("can_approve")
+  canDelete  Boolean  @map("can_delete")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  role Role @relation(fields: [roleId], references: [id])
+  menu Menu @relation(fields: [menuId], references: [id])
+
+  @@map("role_menu_access")
+}
+
+model UserToken {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @map("user_id")
+  refreshToken String   @unique @map("refresh_token")
+  expiresAt    DateTime @map("expires_at")
+  isRevoked    Boolean  @map("is_revoked")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("user_token")
+}
+
+model Status {
+  id    Int     @id @default(autoincrement())
+  key   String
+  name  String
+
+  users User[] @relation(name: "UserStatus")
+  roles Role[] @relation(name: "RoleStatus")
+  menus Menu[] @relation(name: "MenuStatus")
+
+  @@map("status")
+}

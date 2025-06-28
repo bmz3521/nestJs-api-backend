@@ -10,7 +10,6 @@ async function bootstrap() {
     .setTitle('Plan กิน Plan เที่ยว API')
     .setDescription('พยายามจะสร้าง api นัดเจอ สังสรรค์ วางแผนรวมตัวกับเพื่อนๆ')
     .setVersion('1.0')
-    .addTag('api')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
