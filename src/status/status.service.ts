@@ -4,7 +4,8 @@ import { UpdateStatusDto } from './dto/update-status.dto';
 
 @Injectable()
 export class StatusService {
-  create(createStatusDto: CreateStatusDto) {
+  create(_createStatusDto: CreateStatusDto) {
+    void _createStatusDto;
     return 'This action adds a new status';
   }
 
@@ -16,7 +17,8 @@ export class StatusService {
     return `This action returns a #${id} status`;
   }
 
-  update(id: number, updateStatusDto: UpdateStatusDto) {
+  update(id: number, _updateStatusDto: UpdateStatusDto) {
+    void _updateStatusDto;
     return `This action updates a #${id} status`;
   }
 

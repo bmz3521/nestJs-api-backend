@@ -4,7 +4,8 @@ import { UpdateUserTokenDto } from './dto/update-user-token.dto';
 
 @Injectable()
 export class UserTokenService {
-  create(createUserTokenDto: CreateUserTokenDto) {
+  create(_createUserTokenDto: CreateUserTokenDto) {
+    void _createUserTokenDto;
     return 'This action adds a new userToken';
   }
 
@@ -16,7 +17,8 @@ export class UserTokenService {
     return `This action returns a #${id} userToken`;
   }
 
-  update(id: number, updateUserTokenDto: UpdateUserTokenDto) {
+  update(id: number, _updateUserTokenDto: UpdateUserTokenDto) {
+    void _updateUserTokenDto;
     return `This action updates a #${id} userToken`;
   }
 

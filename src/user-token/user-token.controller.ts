@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UserTokenService } from './user-token.service';
 import { CreateUserTokenDto } from './dto/create-user-token.dto';
 import { UpdateUserTokenDto } from './dto/update-user-token.dto';
@@ -23,7 +31,10 @@ export class UserTokenController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserTokenDto: UpdateUserTokenDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateUserTokenDto: UpdateUserTokenDto,
+  ) {
     return this.userTokenService.update(+id, updateUserTokenDto);
   }
 

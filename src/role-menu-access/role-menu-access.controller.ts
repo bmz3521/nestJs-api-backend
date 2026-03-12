@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RoleMenuAccessService } from './role-menu-access.service';
 import { CreateRoleMenuAccessDto } from './dto/create-role-menu-access.dto';
 import { UpdateRoleMenuAccessDto } from './dto/update-role-menu-access.dto';
@@ -23,7 +31,10 @@ export class RoleMenuAccessController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRoleMenuAccessDto: UpdateRoleMenuAccessDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateRoleMenuAccessDto: UpdateRoleMenuAccessDto,
+  ) {
     return this.roleMenuAccessService.update(+id, updateRoleMenuAccessDto);
   }
 

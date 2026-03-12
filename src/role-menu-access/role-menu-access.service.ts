@@ -4,7 +4,8 @@ import { UpdateRoleMenuAccessDto } from './dto/update-role-menu-access.dto';
 
 @Injectable()
 export class RoleMenuAccessService {
-  create(createRoleMenuAccessDto: CreateRoleMenuAccessDto) {
+  create(_createRoleMenuAccessDto: CreateRoleMenuAccessDto) {
+    void _createRoleMenuAccessDto;
     return 'This action adds a new roleMenuAccess';
   }
 
@@ -16,7 +17,8 @@ export class RoleMenuAccessService {
     return `This action returns a #${id} roleMenuAccess`;
   }
 
-  update(id: number, updateRoleMenuAccessDto: UpdateRoleMenuAccessDto) {
+  update(id: number, _updateRoleMenuAccessDto: UpdateRoleMenuAccessDto) {
+    void _updateRoleMenuAccessDto;
     return `This action updates a #${id} roleMenuAccess`;
   }
 
